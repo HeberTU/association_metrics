@@ -32,3 +32,5 @@ class PairWisemetrics:
         else:
             raise TypeError("dataframe must be an instance of a pandas.DataFrame")
 
+    def measure_association(self):
+        pass
