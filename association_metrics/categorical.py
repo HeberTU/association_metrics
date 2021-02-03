@@ -11,8 +11,8 @@ from .pairwise import PairWisemetrics
 
 class CramersV(PairWisemetrics):
     
-    def __init__(self):
-        PairWisemetrics.__init__(self)
+    def __init__(self, dataframe):
+        PairWisemetrics.__init__(self, dataframe)
         self.matrix = None
         
     def select_variables(self):
@@ -80,6 +80,14 @@ class CramersV(PairWisemetrics):
         return v
         
     def fill_pairwisematrix(self):
+        '''
+        fills the square matrix using measure_association method
+
+        Returns
+        -------
+        None.
+
+        '''
         
         n = len(self.cat_columns)
         
@@ -91,6 +99,22 @@ class CramersV(PairWisemetrics):
                 if x == y:
                     self.matrix[x][y] = 1
                 else:
-                    value = self.measure_association(x, y)
+                    value = self.measure_association(
+                        self.data[x], self.data[y])
                     self.matrix[x][y] = value
                     self.matrix[y][x] = value
+    
+    def fit(self):
+        '''
+        Creates a pairwise matrix filled with Cramer's V, where columns and index are the categorical variables of the passed pandas.DataFrame
+
+        Returns
+        -------
+        Cramer's V matrix.
+
+        '''
+        self.select_variables()
+        self.init_pairwisematrix()
+        self.fill_pairwisematrix()
+        
+        return self.matrix
