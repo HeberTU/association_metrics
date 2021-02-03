@@ -1,6 +1,6 @@
 # Association-Metrics
 
-**Association-Metrics** is a Python module for measure the degree of association between variables built on top of SciPy and Numpy. and is distributed under the 3-Clause BSD license.
+**Association-Metrics** is a Python module for measure the degree of association between variables built on top of SciPy and Numpy, and is distributed under the MIT license.
 
 The project started due to the lack of reliable source code to calculate [Cramers'v](https://en.wikipedia.org/wiki/Cram%C3%A9r's_V), and from that, we decided to package-up our development. 
 
