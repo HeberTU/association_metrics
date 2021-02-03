@@ -4,4 +4,4 @@ Created on Wed Feb  3 06:31:52 2021
 
 @author: HTRUJILLO
 """
-
+from categorical import CramersV
