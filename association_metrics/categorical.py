@@ -15,7 +15,43 @@ class CramersV(PairWisemetrics):
         PairWisemetrics.__init__(self)
         
     def select_variables(self):
-        pass
+        '''
+        Selects all category variables
+
+        Returns
+        -------
+        None.
+
+        '''
+        self.cat_columns = self.data.select_dtypes(
+            include=['category']).columns
+        
+        if len(self.cat_columns)==0:
+            raise KeyError("No categorical variables found")
     
+    def init_pairwisematrix(self):
+        '''
+        init a square matrix n x n fill with zeros, where n is the total number of categorical variables found in the pandas.DataFrame
+
+        Returns
+        -------
+        None.
+
+        '''
+        self.matriz_cramer = DataFrame(
+            data = zeros(
+                (len(self.cat_columns),len(self.cat_columns))),
+        columns = self.cat_columns,
+        index = self.cat_columns)
+        
+     
     def measure_association(self):
+        '''
+        Calculates Cramer's V based on Pearson's chi-squared statistic
+
+        Returns
+        -------
+        None.
+
+        '''
         pass
