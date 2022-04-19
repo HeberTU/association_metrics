@@ -48,26 +48,6 @@ class TestMetrics(unittest.TestCase):
         matrix_shape = cramersv.matrix.shape
         self.assertEqual(matrix_shape, (4,4))
         
-    def test_cramers_measure_association(self):
-        tips = read_csv(
-            "./association_metrics/datasets/tips.csv")
-        tips = tips.apply(
-            lambda x: x.astype("category") if x.dtype == "O" else x)
-    
-        cramersv = am.CramersV(tips)
-        
-        sex = tips['sex']
-        smoker = tips['smoker']
-        
-        day = tips['day']
-        time = tips['time']
-        
-        value_1 = cramersv.measure_association(sex,smoker)
-        value_1 = round(value_1,6)
-        value_2 = cramersv.measure_association(time,day)
-        value_2 = round(value_2,6)
-        self.assertEqual((value_1,value_2), (0.002816,0.943295))
-        
     def test_cramers_fit(self):
         tips = read_csv(
             "./association_metrics/datasets/tips.csv")

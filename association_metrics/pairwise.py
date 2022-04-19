@@ -15,7 +15,8 @@ class PairWisemetrics:
         Parameters
         ----------
         dataframe : pandas.DataFrame
-            Pandas dataframe containing the variables of interest to measure the degree of association.
+            Pandas dataframe containing the variables
+            of interest to measure the degree of association.
 
         Returns
         -------
@@ -30,7 +31,4 @@ class PairWisemetrics:
                 self.data = dataframe
                 
         else:
-            raise TypeError("dataframe must be an instance of a pandas.DataFrame")
-
-    def measure_association(self):
-        pass
+            raise TypeError("dataframe must be an instance of a pd.DataFrame")
